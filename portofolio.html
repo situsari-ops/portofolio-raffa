@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ✏️ GANTI: judul tab browser -->
+<title>Nama Kamu — Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0B0D17;
+  --surface: #141827;
+  --ink: #F4F5FF;
+  --muted: #A1A8C3;
+  --line: #292F48;
+  --accent: #8B5CF6;
+  --accent-ink: #FFFFFF;
+  --tint: #24203F;
+
+  --display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --body: 'Figtree', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--body);
+  background:
+    radial-gradient(ellipse at 15% 10%, #252052 0%, transparent 35%),
+    radial-gradient(ellipse at 90% 60%, #102D43 0%, transparent 30%),
+    var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 17px;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid #20D9E8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* SIDEBAR */
+aside {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 48px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-right: 1px solid var(--line);
+  background: rgba(11, 13, 23, 0.75);
+  backdrop-filter: blur(18px);
+}
+
+.photo {
+  width: 168px;
+  height: 168px;
+  border-radius: 28px;
+  object-fit: cover;
+  background: var(--surface);
+  border: 2px solid #8B5CF6;
+  box-shadow: 0 0 30px #8B5CF640;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 25px;
+    margin-bottom: 40px;
+}
+
+.hero-photo {
+    flex-shrink: 0;
+}
+
+.hero-photo img {
+    width: 250px;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    border: 2px solid #8b5cf6;
+}
+
+.hero-description {
+    max-width: 500px;
+}
+
+.hero-description h2 {
+    color: #ffffff;
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.hero-description p {
+    color: #a5aec5;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+    .hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-photo img {
+        width: 220px;
+        height: 250px;
+    }
+}
+
+aside h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 2.1rem;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+
+.role {
+  color: #20D9E8;
+  font-weight: 600;
+}
+
+.bio-short {
+  color: var(--muted);
+  font-size: .98rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 8px 12px;
+  color: var(--muted);
+  font-weight: 500;
+  border-left: 2px solid transparent;
+  border-radius: 0 8px 8px 0;
+  transition: .25s;
+}
+
+nav a:hover {
+  color: #FFFFFF;
+  border-left-color: #20D9E8;
+  background: #20D9E812;
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: auto;
+  font-size: .95rem;
+}
+
+.social a {
+  color: var(--muted);
+  transition: .2s;
+}
+
+.social a:hover {
+  color: #20D9E8;
+}
+
+/* KONTEN */
+main {
+  padding: 48px 48px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+section {
+  scroll-margin-top: 32px;
+}
+
+h2 {
+  font-family: var(--display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  margin-bottom: 20px;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 55px;
+  height: 4px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #8B5CF6, #20D9E8);
+}
+
+.hero p {
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  max-width: 22em;
+}
+
+.hero p::first-line {
+  color: #FFFFFF;
+}
+
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #8B5CF6;
+  transition: transform .25s, box-shadow .25s, background .25s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px #8B5CF630;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #8B5CF6, #6445E8);
+  color: #FFFFFF;
+  border-color: transparent;
+}
+
+.btn.ghost {
+  color: #20D9E8;
+  background: #20D9E80A;
+  border-color: #20D9E850;
+}
+
+.btn.ghost:hover {
+  background: #20D9E818;
+}
+
+.about p {
+  max-width: 62ch;
+  margin-bottom: 14px;
+  color: #C6CBE0;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.skills li {
+  background: linear-gradient(135deg, #252044, #172A3B);
+  color: #D8D0FF;
+  border: 1px solid #8B5CF640;
+  padding: 7px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: .95rem;
+  transition: .2s;
+}
+
+.skills li:hover {
+  border-color: #20D9E8;
+  color: #20D9E8;
+  transform: translateY(-2px);
+}
+
+/* KARTU PROYEK */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.project {
+  background: linear-gradient(145deg, #191E31, #111522);
+  border: 1px solid #303752;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .3s, border-color .3s, box-shadow .3s;
+}
+
+.project:hover {
+  transform: translateY(-6px);
+  border-color: #8B5CF6;
+  box-shadow: 0 15px 35px #00000035;
+}
+
+
+.project .thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  overflow: hidden;
+  background: #111522;
+  display: block;
+}
+
+.project .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+
+
+.project .body {
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.project h3 {
+  font-family: var(--display);
+  font-size: 1.2rem;
+}
+
+.project p {
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.tags {
+  font-size: .85rem;
+  color: #20D9E8;
+  font-weight: 600;
+}
+
+.project a.link {
+  margin-top: auto;
+  padding-top: 10px;
+  font-weight: 600;
+  color: #B49AFF;
+  text-decoration: none;
+}
+
+.project a.link:hover {
+  color: #20D9E8;
+}
+
+/* PENGALAMAN */
+.timeline {
+  list-style: none;
+  padding: 0;
+  border-left: 2px solid #38345C;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-left: 6px;
+}
+
+.timeline li {
+  padding-left: 24px;
+  position: relative;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 9px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #20D9E8;
+  box-shadow: 0 0 14px #20D9E860;
+}
+
+.timeline .when {
+  color: #20D9E8;
+  font-size: .9rem;
+}
+
+.timeline h3 {
+  font-family: var(--display);
+  font-size: 1.15rem;
+}
+
+.timeline p {
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+/* KONTAK */
+.contact {
+  background:
+    radial-gradient(ellipse at top right, #8B5CF625, transparent 60%),
+    var(--surface);
+  border: 1px solid #393454;
+  border-radius: 20px;
+  padding: 36px;
+}
+
+.contact p {
+  max-width: 48ch;
+  margin-bottom: 18px;
+  color: var(--muted);
+}
+
+footer {
+  color: var(--muted);
+  font-size: .9rem;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    position: static;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 36px 24px;
+    align-items: flex-start;
+  }
+
+  nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+  }
+
+  nav a {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .social {
+    margin-top: 8px;
+  }
+
+  main {
+    padding: 36px 24px 64px;
+    gap: 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo {
+    width: 130px;
+    height: 130px;
+  }
+
+  .contact {
+    padding: 24px;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+  }
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0F1524;--surface:#172036;--ink:#E8ECF6;--muted:#9AA6C2;--line:#27324F;--accent:#7C93F5;--accent-ink:#0F1524;--tint:#1E2945}
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.65;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.layout{display:grid;grid-template-columns:340px 1fr;max-width:1180px;margin:0 auto}
+
+/* Sidebar */
+aside{position:sticky;top:0;height:100vh;padding:48px 36px;display:flex;flex-direction:column;gap:20px;border-right:1px solid var(--line)}
+.photo{width:168px;height:168px;border-radius:50%;object-fit:cover;background:var(--tint);border:4px solid var(--surface);box-shadow:0 0 0 2px var(--accent)}
+aside h1{font-family:var(--display);font-weight:800;font-size:2.1rem;line-height:1.1;letter-spacing:-.02em}
+.role{color:var(--accent);font-weight:600}
+.bio-short{color:var(--muted);font-size:.98rem}
+nav{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+nav a{text-decoration:none;padding:6px 0;color:var(--muted);font-weight:500;border-left:2px solid transparent;padding-left:12px}
+nav a:hover{color:var(--ink);border-left-color:var(--accent)}
+.social{display:flex;gap:14px;margin-top:auto;font-size:.95rem}
+.social a{color:var(--muted)}
+.social a:hover{color:var(--accent)}
+
+/* Content */
+main{padding:48px 48px 80px;display:flex;flex-direction:column;gap:72px}
+section{scroll-margin-top:32px}
+h2{font-family:var(--display);font-size:1.7rem;font-weight:700;letter-spacing:-.01em;margin-bottom:20px}
+.hero p{font-family:var(--display);font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.2;font-weight:500;letter-spacing:-.02em;max-width:22em}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{opacity:.9}
+.btn.ghost:hover{background:var(--tint)}
+.about p{max-width:62ch;margin-bottom:14px}
+.skills{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0}
+.skills li{background:var(--tint);padding:6px 16px;border-radius:999px;font-weight:500;font-size:.95rem}
+
+/* Proyek */
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+.project{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.project .thumb{aspect-ratio:16/10;width:100%;object-fit:cover;background:var(--tint);display:grid;place-items:center;color:var(--muted);font-size:.9rem}
+.project .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.project h3{font-family:var(--display);font-size:1.2rem}
+.project p{color:var(--muted);font-size:.95rem}
+.tags{font-size:.85rem;color:var(--accent);font-weight:600}
+.project a.link{margin-top:auto;font-weight:600;color:var(--accent);text-decoration:none}
+.project a.link:hover{text-decoration:underline}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Pengalaman */
+.timeline{list-style:none;padding:0;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:28px;margin-left:6px}
+.timeline li{padding-left:24px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-7px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.timeline .when{color:var(--muted);font-size:.9rem}
+.timeline h3{font-family:var(--display);font-size:1.15rem}
+.timeline p{color:var(--muted);max-width:60ch}
+.sampai {
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* Kontak */
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:36px}
+.contact p{max-width:48ch;margin-bottom:18px;color:var(--muted)}
+footer{color:var(--muted);font-size:.9rem}
+
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr}
+  aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:36px 24px;align-items:flex-start}
+  nav{flex-direction:row;flex-wrap:wrap;gap:6px 18px}
+  nav a{border-left:0;padding-left:0}
+  .social{margin-top:8px}
+  main{padding:36px 24px 64px;gap:56px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* ==============================
+   DESAIN TAMBAHAN PORTOFOLIO
+   ============================== */
+
+/* Background lebih hidup */
+body {
+  background:
+    radial-gradient(ellipse at 10% 5%, #512da840 0%, transparent 35%),
+    radial-gradient(ellipse at 90% 45%, #0891b230 0%, transparent 35%),
+    linear-gradient(135deg, #090b16, #101528 55%, #0b1020);
+  background-attachment: fixed;
+}
+
+/* Animasi masuk halaman */
+.layout {
+  animation: pageEnter 0.8s ease both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sidebar */
+aside {
+  background: rgba(11, 13, 23, 0.82);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid #8b5cf630;
+  box-shadow: 8px 0 40px #00000015;
+}
+
+/* Foto profil sidebar */
+.photo {
+  border-radius: 28px;
+  border: 2px solid #8b5cf6;
+  box-shadow:
+    0 0 0 5px #8b5cf615,
+    0 0 30px #8b5cf640;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+/* Membuat foto profil kembali bulat */
+aside img.photo {
+  width: 168px;
+  height: 168px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50% !important;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border: 3px solid #8B5CF6;
+  box-shadow: 0 0 0 5px #8B5CF620,
+              0 0 25px #8B5CF650;
+  flex-shrink: 0;
+}
+
+/* Ukuran foto di HP */
+@media (max-width: 480px) {
+  aside img.photo {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+.photo:hover {
+  transform: translateY(-5px) rotate(-2deg);
+  box-shadow:
+    0 0 0 7px #8b5cf620,
+    0 0 38px #20d9e855;
+}
+
+/* Nama di sidebar */
+aside h1 {
+  background: linear-gradient(110deg, #ffffff, #b9a4ff, #70e5f3);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Label kelas */
+.role {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 12px;
+  border: 1px solid #20d9e840;
+  border-radius: 30px;
+  background: #20d9e812;
+}
+
+/* Navigasi */
+nav a {
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+nav a:hover {
+  padding-left: 18px;
+  background: linear-gradient(90deg, #8b5cf625, transparent);
+  box-shadow: inset 3px 0 #20d9e8;
+}
+
+/* Link sosial media */
+.social a {
+  text-decoration: none;
+  transition: color 0.25s, transform 0.25s;
+}
+
+.social a:hover {
+  color: #20d9e8;
+  transform: translateY(-3px);
+}
+
+/* Judul setiap bagian */
+h2 {
+  letter-spacing: -0.5px;
+}
+
+h2::after {
+  width: 65px;
+  height: 4px;
+  background: linear-gradient(90deg, #8b5cf6, #20d9e8);
+  box-shadow: 0 0 14px #8b5cf650;
+  transition: width 0.3s ease;
+}
+
+section h2:hover::after {
+  width: 100px;
+}
+
+/* Bagian pembuka */
+.hero {
+  position: relative;
+  padding: 35px;
+  border: 1px solid #8b5cf625;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at 100% 0%, #8b5cf625, transparent 55%),
+    linear-gradient(135deg, #171b30cc, #111522cc);
+  box-shadow: 0 20px 60px #00000020;
+  overflow: hidden;
+}
+
+.hero > p {
+  background: linear-gradient(110deg, #ffffff 25%, #b9a4ff 60%, #62e2f0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Tombol */
+.btn {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px #8b5cf640;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #8b5cf6, #6445e8);
+}
+
+.btn.ghost {
+  background: #20d9e80a;
+}
+
+.btn.ghost:hover {
+  background: #20d9e820;
+  border-color: #20d9e8;
+}
+
+/* Foto di bagian Tentang Saya */
+.hero-content {
+  align-items: center;
+  gap: 35px;
+  padding: 22px;
+  border: 1px solid #8b5cf625;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #171b30aa, #111522aa);
+}
+
+.hero-photo img {
+  display: block;
+  border-radius: 18px;
+  border: 2px solid #8b5cf6;
+  box-shadow: 0 12px 35px #00000045;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hero-photo img:hover {
+  transform: scale(1.025);
+  box-shadow: 0 15px 40px #8b5cf640;
+}
+
+.hero-description p {
+  color: #c6cbe0;
+}
+
+/* Skill */
+.skills li {
+  border: 1px solid #8b5cf640;
+  background: linear-gradient(135deg, #252044, #172a3b);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.skills li:hover {
+  transform: translateY(-4px);
+  border-color: #20d9e8;
+  box-shadow: 0 8px 20px #20d9e815;
+}
+
+/* Kartu proyek dan sertifikat */
+.project {
+  position: relative;
+  background: linear-gradient(145deg, #191e31, #101422);
+  border: 1px solid #303752;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px #00000015;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-8px);
+  border-color: #8b5cf6;
+  box-shadow:
+    0 20px 40px #00000035,
+    0 0 25px #8b5cf615;
+}
+
+/* Gambar proyek tetap landscape */
+.project .thumb {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #101422;
+}
+
+.project .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.project:hover .thumb img {
+  transform: scale(1.06);
+}
+
+/* Isi kartu */
+.project .body {
+  padding: 22px;
+}
+
+.project h3 {
+  color: #f4f5ff;
+  transition: color 0.25s ease;
+}
+
+.project:hover h3 {
+  color: #b9a4ff;
+}
+
+.project p {
+  line-height: 1.8;
+}
+
+.project a.link {
+  display: inline-block;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.project a.link:hover {
+  color: #20d9e8;
+  transform: translateX(5px);
+}
+
+/* Timeline pendidikan dan pengalaman */
+.timeline {
+  border-left-color: #494071;
+}
+
+.timeline li {
+  padding: 20px 22px;
+  margin-left: 0;
+  border: 1px solid #8b5cf620;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #171b30cc, #111522cc);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.timeline li:hover {
+  transform: translateX(6px);
+  border-color: #8b5cf680;
+}
+
+.timeline li::before {
+  left: -7px;
+}
+
+/* Kotak kontak */
+.contact {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at top right, #8b5cf630, transparent 60%),
+    linear-gradient(135deg, #171b30, #111522);
+  border: 1px solid #8b5cf650;
+  box-shadow: 0 15px 45px #00000020;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact:hover {
+  border-color: #8b5cf6;
+  box-shadow: 0 18px 45px #8b5cf625;
+}
+
+/* Footer */
+footer {
+  padding-top: 24px;
+  border-top: 1px solid #8b5cf630;
+  text-align: center;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0d17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#8b5cf6, #20d9e8);
+  border-radius: 20px;
+}
+
+/* Tampilan tablet */
+@media (max-width: 860px) {
+  .hero {
+    padding: 28px;
+  }
+
+  .hero-content {
+    gap: 24px;
+  }
+
+  .timeline li:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+  main {
+    padding: 28px 18px 50px;
+  }
+
+  .hero {
+    padding: 24px 20px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    max-width: 280px;
+    height: 280px;
+  }
+
+  .contact {
+    padding: 24px 20px;
+  }
+
+  .project .body {
+    padding: 18px;
+  }
+}
+
+/* Hormati pengaturan pengurangan animasi */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <aside>
+    <!-- ✏️ GANTI: taruh file foto di folder yang sama, lalu ubah src jadi "foto.jpg" (atau nama file kamu) -->
+    <img class="photo" src="foto.jpg" alt="Foto Nama Kamu" onerror="this.removeAttribute('src')">
+    <div>
+      <h1>M.Raffa Al Farid</h1>
+      <p class="role">XII RPL 1</p>
+    </div>
+    <p class="bio-short">Terus bertumbuh, menciptakan karya, dan mengubah ide menjadi nyata. 🚀</p>
+    <nav aria-label="Navigasi">
+      <a href="#tentang">Tentang</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <!-- ✏️ GANTI: link sosial media (hapus yang tidak dipakai) -->
+    <div class="social">
+      <a href="https://linkedin.com/in/username">LinkedIn</a>
+      <a href="https://github.com/username">GitHub</a>
+      <a href="https://instagram.com/raff_4njy">Instagram</a>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero">
+      <!-- ✏️ GANTI: kalimat pembuka utama -->
+      <p>Halo, saya Raffa.</p>
+      <div class="btns">
+        <a class="btn primary" href="#proyek">Lihat proyek</a>
+        <a class="btn ghost" href="#kontak">Hubungi saya</a>
+      </div>
+    </section>
+
+    <section id="tentang" class="about">
+      <h2 style="margin-top:32px">Tentang Saya</h2>
+<div class="hero-content">
+    <div class="hero-photo">
+        <img src="fotogue.jpeg" alt="Foto Raffa">
+    </div>
+
+    <div class="hero-description">
+        <p>
+            Saya adalah siswa jurusan Rekayasa Perangkat Lunak (RPL) di SMK Bina Mandiri
+            Multimedia dengan minat dan ketertarikan dalam bidang pengembangan aplikasi 
+            serta pemrograman. Selama menempuh pendidikan, saya telah mempelajari 
+            berbagai bahasa pemrograman dan teknologi pengembangan web.
+        </p>
+    </div>
+</div>
+
+      <h2 style="margin-top:32px">Bahasa pemrograman yang digunakan</h2>
+      <ul class="skills">
+        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>PHP</li><li>Python</li>
+      </ul>
+    </section>
+
+    <section id="proyek">
+      <h2>Proyek</h2>
+      <div class="projects">
+        <!-- ✏️ GANTI: salin blok <article> ini untuk menambah proyek. Ganti thumbnail dengan <img class="thumb" src="proyek1.jpg" alt="..."> -->
+        <article class="project">
+           <div class="thumb">
+    <img src="bukutamu.jpeg" alt="Foto web">
+  </div>
+
+  <div class="body">
+    <h3>Website Buku Tamu Digital</h3>
+    <p>Website Buku Tamu Digital digunakan untuk mempermudah pencatatan dan pendataan 
+      pengunjung kantor desa secara digital.</p>
+    <a class="link" href="#">Lihat proyek</a>
+  </div>
+        </article>
+
+        <article class="project">
+           <div class="thumb">
+    <img src="deteksijari.png" alt="Foto web">
+  </div>
+
+  <div class="body">
+    <h3>Deteksi Jari</h3>
+    <p>Deteksi jari berbasis computer vision yang menggabungkan teknologi kamera 
+      dan interaksi visual secara real-time.</p>
+    <a class="link" href="#">Lihat proyek</a>
+  </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="pengalaman">
+      <h2>Pendidikan</h2>
+      <ul class="timeline">
+        <li>
+          <span class="when">2024 – Sekarang</span>
+          <h3>SMK Bina Mandiri Multimedia</h3>
+        </li>
+        <li>
+          <span class="when">2021 – 2024</span>
+          <h3>MTS An-Nizhamiyyah Cileungsi</h3>
+        </li>
+        <li>
+          <span class="when">2015 – 2021</span>
+          <h3>SDN Cileungsi 01</h3>
+        </li>
+      </ul>
+    </section>
+
+     <section id="pengalaman">
+      <h2>Pengalaman PKL</h2>
+      <ul class="timeline">
+        <li>
+          <span class="when"></span>
+          <h3>Membantu pemasangan dan perbaikan jaringan internet fiber optik.</h3>
+        </li>
+        <li>
+          <span class="when"></span>
+          <h3>Mendapat pengalaman di bidang jaringan dan teknologi informasi.</h3>
+        </li>
+        <li>
+          <span class="when"></span>
+          <h3>Mendata pelanggan wifi.</h3>
+        </li>
+         <article class="project">
+  <div class="thumb">
+    <img src="sertifikat.jpg.png" alt="Foto Sertifikat">
+  </div>
+
+  <div class="body">
+    <h3>Sertifikat</h3>
+    <p>Sertifikat hasil praktik kerja lapangan</p>
+    <a class="link" href="#">Lihat proyek</a>
+  </div>
+</article>
+      </ul>
+    </section>
+
+    <section id="kontak">
+      <h2>Kontak</h2>
+      <div class="contact">
+        <h2>Yuk, ngobrol!</h2>
+        <p>Ada proyek, lowongan magang, atau mau kenalan? kirim pesan saja.</p>
+        <!-- ✏️ GANTI: email dan nomor WhatsApp (format 62812xxxx tanpa + dan 0) -->
+        <div class="btns" style="margin-top:0">
+          <a class="btn primary" href="mailto:mraffaalfarid@gmail.com">Email</a>
+          <a class="btn ghost" href="https://wa.me/6285772176263">WhatsApp</a>
+          <a class="btn ghost" href="https://instagram.com/raff_4njy">Instagram</a>
+        </div>
+        <P class="sampai">Sampai Bertemu!</P>
+      </div>
+    </section>
+
+    <footer>© 2026 Raffa, SMK Bina Mandiri Multimedia</footer>
+  </main>
+
+</div>
+</body>
+</html>
